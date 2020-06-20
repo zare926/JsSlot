@@ -47,17 +47,30 @@
         this.spin();
       },50);
     }
+
+    isUnmatched(p1,p2) {
+      // if (this.img.src !== p1.img.src && this.img.src !== p2.img.src) {
+      //   return true;
+      // } else {
+      //   return false;
+      // }
+      return this.img.src !== p1.img.src && this.img.src !== p2.img.src;
+    }
+
+    unmatch(){
+      this.img.classList.add('unmached');
+    }
   }
 
   function checkResult() {
     if (panels[0].isUnmatched(panels[1],panels[2])){
-        panels[0],unmatch();
+        panels[0].unmatch();
     }
     if (panels[1].isUnmatched(panels[0],panels[2])){
-        panels[1],unmatch();
+        panels[1].unmatch();
     }
     if (panels[2].isUnmatched(panels[0],panels[1])){
-        panels[2],unmatch();
+        panels[2].unmatch();
     }
   }
 
@@ -71,6 +84,7 @@
 
   const spin = document.getElementById('spin');
   spin.addEventListener('click', () => {
+    spin.classList.add('inactive');
     panels.forEach(panel => {
       panel.spin();
     });
